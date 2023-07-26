@@ -1,7 +1,8 @@
-require('dotenv').config()
+const PORT = process.env.PORT ?? 8000
 const express = require('express')
 
 const workoutRoutes = require("./routes/workouts");
+const pool = require('./db')
 
 const app = express()
 
@@ -19,6 +20,6 @@ app.use('/api/workouts', workoutRoutes);
 
 
 //listen for requests
-app.listen(process.env.PORT, () =>{
- console.log("listening on port", process.env.PORT)
+app.listen(PORT, () =>{
+ console.log("listening on port", PORT)
 })
