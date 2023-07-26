@@ -1,10 +1,16 @@
 const express = require('express')
 
 const router = express.Router()
-
 //GET all workouts
-router.get('/', (req, res) => {
- res.json({mssg: 'GET all workouts'})
+router.get('/workouts', async(req, res) => {
+ try {
+  const workouts = await pool.query('SELECT * FROM workouts')
+  res.json(workouts.rows)
+
+ } catch (error) {
+  console.error(error)
+ }
+ 
 
 })
 
