@@ -40,18 +40,16 @@ try {
  //POST a new workout
  app.post('/workouts', async (req, res) => {
   const {title, loads, reps} = req.body;
-  console.log(title, loads, reps);
+  console.log(title, loads, reps)
 
   try {
     const createWorkout = await pool.query(
-      `INSERT INTO workouts (Tiltle, Loads, Reps) VALUES($1, $2, $3)`,[title, loads, reps]);
+      `INSERT INTO workouts(Tiltle, Loads, Reps)VALUES($1, $2, $3)`,[title, loads, reps]);
     res.json(createWorkout);
   } catch (err) {
     console.log(err);
   }
-
-  
- })
+});
  
  //DELETE  a workout
  app.delete('/workout/:id', async(req, res) => {
@@ -69,14 +67,20 @@ try {
  
  
  //UPDATE a workout
- app.patch('/:id', (req, res) => {
-  res.json({mssg: 'UPDATE a workout'})
+ app.put('/workout/:id', async (req, res) => {
+  const { id } = req.params;
+  const { title, loads, reps } = req.body;
+  try {
+    const editWorkout= await pool.query(
+      'UPDATE workouts SET Tiltle = $1, Loads=$2, Reps=$3 WHERE Id = $4',
+      [title, loads, reps, id]
+    );
+    res.json(editWorkout);
+  } catch (err) {
+    console.error(err);
+  }
  })
  
-
-
-
-
 
 //listen for requests
 app.listen(PORT, () =>{

@@ -1,6 +1,6 @@
 CREATE TABLE workouts (
    Id   SERIAL PRIMARY KEY,
-   Title    VARCHAR(100),
+   Tiltle    VARCHAR(100),
    Loads   int,
    Reps  int
 );
