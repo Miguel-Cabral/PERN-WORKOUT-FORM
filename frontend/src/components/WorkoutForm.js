@@ -16,9 +16,19 @@ const WorkoutForm = () => {
     }
   })
   const json = await response.json()
+  if (!response.ok){
+    setError(json.error)
+  }
+  if(response.ok){
+    setTitle('')
+    setLoads('')
+    setReps('')
+    setError(null)
+    console.log('new workout added', json)
+  }
  }
   return (
-    <form className='create' on onSubmit={}>
+    <form className='create' on onSubmit={handleSubmit}>
      <h3>Add a New Workout</h3>
      <label>Exersize Title</label>
      <input type='text'

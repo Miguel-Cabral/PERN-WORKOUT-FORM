@@ -9,14 +9,14 @@ const Home = () => {
   const fetchWorkouts = async () => {
     const response = await fetch("/workouts");
     const json = await response.json();
-    if (response.ok) {
+    if (response.ok){
       setWorkouts(json);
     }
   };
  
 
   fetchWorkouts();
- },[] );
+ },[setWorkouts] );
  return(
   <div className="home">
    <div className="workouts">
