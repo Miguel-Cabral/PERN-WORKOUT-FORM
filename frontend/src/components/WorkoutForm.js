@@ -4,9 +4,11 @@ const WorkoutForm = () => {
  const[title, setTitle] = useState('')
  const[loads, setLoads] = useState('')
  const[reps, setReps] = useState('')
+ const[error, setError] = useState(null)
 
  const handleSubmit = async(e) =>{
   e.preventDefault()
+
   const workout = {title, loads, reps}
   const response = await fetch('/workouts', {
     method: 'POST',
@@ -46,7 +48,7 @@ const WorkoutForm = () => {
        value={reps}
      />
      <button> Add Workout</button>
-     
+     {error && <div className='error'> {error}</div>}
     </form>
   )
 }
