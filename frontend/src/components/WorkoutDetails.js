@@ -3,14 +3,14 @@ import React from 'react'
 const WorkoutDetails = ({workout}) => {
   return (
    <div className="workout-details">
-   <h4>{workout.Tiltle}</h4>
+   <h4>{workout.title}</h4>
    <p>
      <strong>Load (kg): </strong>
-     {workout.Loads}
+     {workout.loads}
    </p>
    <p>
      <strong>Reps: </strong>
-     {workout.Reps}
+     {workout.reps}
    </p>
    
  </div>
