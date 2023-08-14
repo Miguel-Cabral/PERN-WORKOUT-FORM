@@ -5,7 +5,7 @@ import WorkoutForm from "../components/WorkoutForm";
 
 
 const Home = () => {
- const {workouts, setWorkouts} = useState(null)
+ const [workouts, setWorkouts] = useState(null)
  useEffect(() => {
   const fetchWorkouts = async () => {
     const response = await fetch("/workouts");
@@ -17,7 +17,7 @@ const Home = () => {
  
 
   fetchWorkouts();
- },[setWorkouts] );
+ },[] );
  return(
   <div className="home">
     <div className="workouts">
