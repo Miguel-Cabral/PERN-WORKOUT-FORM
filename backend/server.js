@@ -52,11 +52,11 @@ try {
 });
  
  //DELETE  a workout
- app.delete('/workout/:id', async(req, res) => {
+ app.delete('/workout/:id', async (req, res) => {
   const { id } = req.params;
   try {
     const deleteWorkout = await pool.query('DELETE FROM workouts WHERE Id = $1;', [
-      id,
+      id
     ]);
     res.json(deleteWorkout);
   } catch (err) {
