@@ -18,12 +18,18 @@ const Home = () => {
 
   fetchWorkouts();
  },[] );
+
+ const handleDelete = (deletedId) => {
+  setWorkouts((prevWorkouts) => 
+  prevWorkouts.filter((workout) => workout.id !== deletedId));
+ };
  return(
   <div className="home">
     <div className="workouts">
         {workouts &&
           workouts.map((workout) => {
-            return <WorkoutDetails key={workout.Id} workout={workout} />;
+            return <WorkoutDetails key={workout.id} 
+            workout={workout} onDelete={handleDelete}/>;
           })}
     </div>
      <WorkoutForm />
