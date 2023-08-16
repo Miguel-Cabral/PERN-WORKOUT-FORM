@@ -17,7 +17,9 @@ const Home = () => {
  
 
   fetchWorkouts();
- },[] );
+ },[workouts] );
+
+ 
 
  const handleDelete = (deletedId) => {
   setWorkouts((prevWorkouts) => 
@@ -32,7 +34,7 @@ const Home = () => {
             workout={workout} onDelete={handleDelete}/>;
           })}
     </div>
-     <WorkoutForm />
+     <WorkoutForm  />
 
   </div>
  )
