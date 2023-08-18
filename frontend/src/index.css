@@ -11,10 +11,9 @@ body {
   margin: 0;
   font-family: "Poppins";
 }
-header {
-  background: #fff;
-}
-header .container {
+
+
+.container {
   max-width: 1400px;
   margin: 0 auto;
   padding: 10px 20px;
@@ -22,7 +21,7 @@ header .container {
   align-items: center;
   justify-content: space-between;
 }
-header a {
+ a {
   color: #333;
   text-decoration: none;
 }
