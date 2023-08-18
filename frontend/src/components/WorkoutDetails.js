@@ -1,13 +1,15 @@
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
-const WorkoutDetails = ({workout, onDelete}) => {
+const WorkoutDetails = ({ workout, onDelete }) => {
 
-  const handleClick = async() =>{
-    const response = await fetch('/workout/' + workout.id,{
+  const handleClick = async () => {
+    const response = await fetch('/workout/' + workout.id, {
       method: 'DELETE'
     })
 
-    if (response.ok){
+    if (response.ok) {
       onDelete(workout.id);
 
     } else {
@@ -15,22 +17,24 @@ const WorkoutDetails = ({workout, onDelete}) => {
     }
 
   }
-  
-  
+
+
   return (
-   <div className="workout-details">
-   <h4>{workout.tiltle}</h4>
-   <p>
-     <strong>Load (kg): </strong>
-     {workout.loads}
-   </p>
-   <p>
-     <strong>Reps: </strong>
-     {workout.reps}
-   </p>
-   <span onClick={handleClick}>DELETE </span>
-   
- </div>
+    <div className="workout-details">
+      <h4>{workout.tiltle}</h4>
+      <p>
+        <strong>Load (kg): </strong>
+        {workout.loads}
+      </p>
+      <p>
+        <strong>Reps: </strong>
+        {workout.reps}
+      </p>
+      <span onClick={handleClick}>
+        <FontAwesomeIcon icon={faTrashAlt} />
+      </span>
+
+    </div>
   )
 }
 
