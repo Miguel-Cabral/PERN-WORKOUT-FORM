@@ -2,6 +2,7 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
+
 const WorkoutDetails = ({ workout, onDelete }) => {
 
   const handleClick = async () => {
@@ -29,6 +30,10 @@ const WorkoutDetails = ({ workout, onDelete }) => {
       <p>
         <strong>Reps: </strong>
         {workout.reps}
+      </p>
+      <p>
+        {new Date(workout.workoutdate).toLocaleString()}
+        
       </p>
       <span onClick={handleClick}>
         <FontAwesomeIcon icon={faTrashAlt} />
