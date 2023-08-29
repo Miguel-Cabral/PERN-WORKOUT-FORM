@@ -1,9 +1,12 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { format, formatDistanceToNow  } from 'date-fns';
 
 
 const WorkoutDetails = ({ workout, onDelete }) => {
+
+  const timeElapsed = formatDistanceToNow(new Date(workout.created_at));
 
   const handleClick = async () => {
     const response = await fetch('/workout/' + workout.id, {
@@ -32,9 +35,16 @@ const WorkoutDetails = ({ workout, onDelete }) => {
         {workout.reps}
       </p>
       <p>
-        {new Date(workout.workoutdate).toLocaleString()}
-        
+        <strong>Series: </strong>
+        {workout.series}
       </p>
+      <p>
+        <strong>Date: </strong>
+        {format(new Date(workout.created_at), 'MMM d, yyyy HH:mm')}
+     
+      </p>
+      <p>{timeElapsed}ago</p>
+      
       <span onClick={handleClick}>
         <FontAwesomeIcon icon={faTrashAlt} />
       </span>
