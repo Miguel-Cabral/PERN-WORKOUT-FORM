@@ -39,12 +39,12 @@ try {
  
  //POST a new workout
  app.post('/workouts', async (req, res) => {
-  const {title, loads, reps} = req.body;
-  console.log(title, loads, reps)
+  const {title, loads, reps, series} = req.body;
+  console.log(title, loads, reps, series)
 
   try {
     const createWorkout = await pool.query(
-      `INSERT INTO workouts(Tiltle, Loads, Reps)VALUES($1, $2, $3)`,[title, loads, reps]);
+      `INSERT INTO workouts(Tiltle, Loads, Reps, Series)VALUES($1, $2, $3, $4)`,[title, loads, reps, series]);
     res.json(createWorkout);
   } catch (err) {
     console.log(err);
